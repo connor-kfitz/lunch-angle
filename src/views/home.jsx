@@ -25,7 +25,12 @@ export default function Home() {
 
     return (
         <div className="home" onClick={() => updateCategoires()}>
-            <Wheel categories={categories}></Wheel>
+            <div className="game-container">
+                <div className="game-container__icon">
+                    <div className="game-container__arrow"></div>
+                </div>
+                <Wheel categories={categories}></Wheel>
+            </div>
         </div>
     );
 }

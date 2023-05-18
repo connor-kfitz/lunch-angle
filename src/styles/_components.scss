@@ -1,10 +1,75 @@
-.wheel {
+.game-container {
     position: relative;
     height: 50rem;
     width: 50rem;
+
+    &__icon {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: -12rem;
+        width: 8rem;
+        height: 6rem;
+        cursor: pointer;
+        animation: horizontalBounce .8s infinite;
+    }
+
+    &__arrow {
+        position: absolute;
+        top: 2.5rem;
+        width: 90%;
+        height: 1rem;
+        background-color: #fff;
+        box-shadow: 0 -.3rem .5rem rgba(0, 0, 0, .2);
+        animation: arrow 1s linear infinite;
+        transform: rotate(180deg);
+
+
+        &::after, &::before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 1rem;
+            right: -.8rem;
+            background-color: #fff;
+        }
+
+        &::after {
+            top: -1.2rem;
+            transform: rotate(45deg);
+            box-shadow: 0 -.3rem .5rem rgba(0, 0, 0, .2);
+        }
+
+        &::before {
+            top: 1.2rem;
+            transform: rotate(-45deg);
+        }
+    }
+
+    @keyframes horizontalBounce {
+        0% {
+            transform: translateX(0rem);
+        }
+
+        50% {
+            transform: translateX(-1rem);
+        }
+
+        100% {
+            transform: translateX(0rem);
+        }
+    }
+}
+
+.wheel {
+    position: relative;
+    height: 100%;
+    width: 100%;
     border-radius: 100rem;
     background-color: white;
     transition: all ease 4s;
+    border: solid #fff .2rem;
 
     &__quarter {
         position: absolute;
@@ -12,17 +77,22 @@
         width: 50%;
         border-top-left-radius: 100rem;
         transform-origin: bottom right;
+        border: solid #fff .2rem;
     }
 
     &__center {
         position: absolute;
-        top: calc(50% - 2.5rem);
-        left: calc(50% - 2.5rem);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
         z-index: 1000;
         width: 5rem;
         height: 5rem;
         border-radius: 10rem;
-        background-color: black;
+        background-color: #000;
+        border: solid #fff .4rem;
     }
 
     @keyframes rotate {
