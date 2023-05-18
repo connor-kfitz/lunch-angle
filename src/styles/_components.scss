@@ -1,0 +1,41 @@
+.wheel {
+    position: relative;
+    height: 50rem;
+    width: 50rem;
+    border-radius: 100rem;
+    background-color: white;
+    transition: all ease 4s;
+
+    &__quarter {
+        position: absolute;
+        height: 50%;
+        width: 50%;
+        border-top-left-radius: 100rem;
+        transform-origin: bottom right;
+    }
+
+    &__center {
+        position: absolute;
+        top: calc(50% - 2.5rem);
+        left: calc(50% - 2.5rem);
+        z-index: 1000;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 10rem;
+        background-color: black;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        50% {
+            transform: rotate(180deg);
+        }
+
+        100% {
+            transform: rotate(270deg);
+        }
+    }
+}
