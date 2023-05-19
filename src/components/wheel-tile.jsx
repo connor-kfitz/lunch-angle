@@ -1,14 +1,15 @@
-export default function WheelTile({ title, backgroundColor, position, key }) {
-    
+export default function WheelTile({ title, backgroundColor, position, tileCount }) {
+
     const tileStyle = {
-        backgroundColor: backgroundColor,
-        transform: `rotate(${position}deg)`
+        transform: `rotate(${position}deg)`,
+        transformOrigin: 'center'
     }
 
-    console.log(position)
-
     return (
-        <div className="wheel__quarter" style={tileStyle}>
-        </div>
+            <circle r="125" cx="250" cy="250" fill="transparent"
+                stroke={backgroundColor}
+                strokeWidth="235"
+                strokeDasharray={`calc((100 / ${tileCount}) * 785.4 / 100) 1570`}
+                style={tileStyle}/>
     );
 }

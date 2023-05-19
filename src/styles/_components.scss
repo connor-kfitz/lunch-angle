@@ -1,5 +1,28 @@
+.input-data {
+    display: flex;
+    margin-bottom: 5rem;
+
+    &__text {
+        font-size: inherit;
+        margin-right: 2rem;
+        border: solid #000 .2rem;
+        border-radius: .5rem;
+        padding: 1rem 2rem;
+    }
+
+    &__button {
+        font-weight: 600;
+        font-size: inherit;
+        border: solid #000 .2rem;
+        border-radius: 1rem;
+        padding: 1rem 3rem;
+        cursor: pointer;
+    }
+}
+
 .game-container {
     position: relative;
+    z-index: 500;
     height: 50rem;
     width: 50rem;
 
@@ -71,13 +94,10 @@
     transition: all ease 4s;
     border: solid #fff .2rem;
 
-    &__quarter {
+    &__tile {
         position: absolute;
-        height: 50%;
-        width: 50%;
-        border-top-left-radius: 100rem;
-        transform-origin: bottom right;
-        border: solid #fff .2rem;
+        overflow: visible;
+        transform-origin: center;
     }
 
     &__center {
