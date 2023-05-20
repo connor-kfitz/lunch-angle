@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import InputData from '../components/input-data';
 import Wheel from '../components/wheel';
@@ -8,9 +8,17 @@ export default function Home() {
 
     const [categories, setCategories] = useState([]);
     const [availableColors, setAvailableColors] = useState(Constants.colors)
+    const [animateInputField, setAnimateInputField] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (animateInputField) setAnimateInputField(false);
+        }, 300)
+    },[animateInputField])
 
     function addCategory(title) {
-        if (categories.length >= Constants.colors.length) return;
+        if (checkAvailableColors()) return;
+        if (checkTitle(title)) return setAnimateInputField(true);
         let color = getColor();
         let newCateogry = {title: title, backgroundColor: color, position: 0};
         let cateogriesDeepCopy = JSON.parse(JSON.stringify(categories));
@@ -32,9 +40,21 @@ export default function Home() {
         return categories.length;
     }
 
+    function checkAvailableColors() {
+        if (categories.length >= Constants.colors.length ) return true;
+        return false;
+    }
+
+    function checkTitle(title) {
+        if (!title) return true;
+        let lowerCaseTitle = title.toLowerCase();
+        if (categories.some((item) => item.title.toLowerCase() === lowerCaseTitle)) return true;
+        return false;
+    }
+
     return (
         <div className="home">
-            <InputData addCategory={addCategory}></InputData>
+            <InputData addCategory={addCategory} animateInputField={animateInputField}></InputData>
             <div className="game-container">
                 <div className="game-container__icon">
                     <div className="game-container__arrow"></div>

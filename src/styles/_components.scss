@@ -18,6 +18,22 @@
         padding: 1rem 3rem;
         cursor: pointer;
     }
+
+    &__animate {
+        animation: shake .15s 2 linear;
+    }
+
+    @keyframes shake {
+        0% {
+          transform: translate(.3rem, 0);
+        }
+        50% {
+          transform: translate(-.3rem, 0);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
 }
 
 .game-container {
