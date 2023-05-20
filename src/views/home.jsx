@@ -38,6 +38,8 @@ export default function Home() {
         let cateogriesDeepCopy = JSON.parse(JSON.stringify(categories));
         let color = cateogriesDeepCopy[index].backgroundColor
         cateogriesDeepCopy.splice(index, 1);
+        let positionIncrement = 360 / (cateogriesDeepCopy.length);
+        cateogriesDeepCopy.map((item, key) => item.position = key * positionIncrement);
         setAvailableColors(previous => [color, ...previous]);
         setCategories(cateogriesDeepCopy);
     }
