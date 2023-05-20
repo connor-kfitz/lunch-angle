@@ -1,4 +1,4 @@
-export default function WheelTile({ title, backgroundColor, position, tileCount }) {
+export default function WheelTile({ backgroundColor, position, tileCount }) {
 
     const tileStyle = {
         transform: `rotate(${position}deg)`,

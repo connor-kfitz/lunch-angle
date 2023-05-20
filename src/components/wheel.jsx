@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import WheelTile from "./wheel-tile";
+import WheelTitle from "./wheel-title";
 
 export default function Wheel({ categories, tileCount }) {
 
@@ -23,8 +24,12 @@ export default function Wheel({ categories, tileCount }) {
     return (
         <svg className="wheel" height="500" width="500" style={spinValue} onClick={() => spin()}>
             {categories.map((item, key) => (
-                <WheelTile title={item.title} backgroundColor={item.backgroundColor} position={item.position} tileCount={tileCount} key={key}></WheelTile>
+                <WheelTile backgroundColor={item.backgroundColor} position={item.position} tileCount={tileCount} key={key}></WheelTile>
             ))}
+            {categories.map((item, key) => (
+                <WheelTitle title={item.title} position={item.position} tileCount={tileCount} key={key}></WheelTitle>
+            ))}
+
         </svg>
     );
 }
