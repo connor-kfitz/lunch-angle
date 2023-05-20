@@ -2,7 +2,7 @@
 export default function WheelTitle({ title, position, tileCount }) {
 
     const titleStyle = {
-        transform: `rotate(${position - (360 / tileCount / 2)}deg)`
+        transform: `rotate(${position + (360 / tileCount / 2)}deg)`
     }
 
     return (

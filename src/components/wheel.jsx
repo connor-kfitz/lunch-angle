@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import WheelTile from "./wheel-tile";
 import WheelTitle from "./wheel-title";
 
-export default function Wheel({ categories, tileCount }) {
+export default function Wheel({ categories, tileCount, getWinner }) {
 
     const [spinAmount, setSpinAmount] = useState(0);
+
+    useEffect(() => {
+        setTimeout(() => {
+            getWinner(spinAmount);
+        }, 4000)
+    },[spinAmount, getWinner])
 
     const spinValue = {
         transform: `rotate(${spinAmount}deg)` 

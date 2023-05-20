@@ -9,6 +9,7 @@ export default function Home() {
     const [categories, setCategories] = useState([]);
     const [availableColors, setAvailableColors] = useState(Constants.colors)
     const [animateInputField, setAnimateInputField] = useState(false);
+    const [winner, setWinner] = useState('');
 
     useEffect(() => {
         setTimeout(() => {
@@ -52,6 +53,18 @@ export default function Home() {
         return false;
     }
 
+    function getWinner(spin) {
+        if (categories.length === 1) return setWinner(categories[0].title);
+        const relativeSpin = 360 - (spin % 360);
+        let winner = "";
+        categories.forEach((item) => {
+            if (relativeSpin > item.position && relativeSpin < item.position + (360 / categories.length)) {
+                winner = item.title;
+            }
+        })
+        return setWinner(winner);
+    }
+
     return (
         <div className="home">
             <InputData addCategory={addCategory} animateInputField={animateInputField}></InputData>
@@ -59,8 +72,9 @@ export default function Home() {
                 <div className="game-container__icon">
                     <div className="game-container__arrow"></div>
                 </div>
-                <Wheel categories={categories} tileCount={getTileCount()}></Wheel>
+                <Wheel categories={categories} tileCount={getTileCount()} getWinner={getWinner}></Wheel>
                 <div className="wheel__center"></div>
+                <div className="game-container__winner">Winner: {winner}</div>
             </div>
         </div>
     );
