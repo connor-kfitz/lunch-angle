@@ -1,22 +1,38 @@
 .input-data {
-    display: flex;
-    margin-bottom: 5rem;
+    &__add {
+        display: flex;
+        margin-bottom: 2rem;
+    }
 
     &__text {
+        font-family: inherit;
         font-size: inherit;
         margin-right: 2rem;
-        border: solid #000 .2rem;
+        border: solid #cecece .2rem;
         border-radius: .5rem;
         padding: 1rem 2rem;
     }
 
     &__button {
-        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: inherit;
+        font-weight: 700;
         font-size: inherit;
-        border: solid #000 .2rem;
-        border-radius: 1rem;
+        color: #fff;
+        background: rgb(60,111,253);
+        background: linear-gradient(180deg, rgba(60,111,253,1) 0%, rgba(49,61,213,1) 100%);
+        border: none;
+        border-radius: .75rem;
         padding: 1rem 3rem;
+        max-width: 9.1rem;
+        transition: .1s ease-in;
         cursor: pointer;
+
+        &:hover {
+            scale: 1.05;
+        }
     }
 
     &__animate {
@@ -33,7 +49,22 @@
         100% {
           transform: translate(0, 0);
         }
-      }
+    }
+
+    &__remove {
+        display: flex;
+        margin-bottom: 2rem;
+    }
+
+    &__select {
+        flex: 1;
+        font-family: inherit;
+        font-size: inherit;
+        border: solid #cecece .2rem;
+        border-radius: .5rem;
+        margin-right: 2rem;
+        padding: 1rem 1.8rem;
+    }
 }
 
 .game-container {

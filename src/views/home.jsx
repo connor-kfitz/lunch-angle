@@ -32,6 +32,16 @@ export default function Home() {
         }
     }
 
+    function removeCategory(title) {
+        if (categories.length === 0) return;
+        const index = categories.map(item => item.title).indexOf(title.current.value);
+        let cateogriesDeepCopy = JSON.parse(JSON.stringify(categories));
+        let color = cateogriesDeepCopy[index].backgroundColor
+        cateogriesDeepCopy.splice(index, 1);
+        setAvailableColors(previous => [color, ...previous]);
+        setCategories(cateogriesDeepCopy);
+    }
+
     function getColor() {
         setAvailableColors(previous => previous.slice(1));
         return availableColors[0];
@@ -67,7 +77,7 @@ export default function Home() {
 
     return (
         <div className="home">
-            <InputData addCategory={addCategory} animateInputField={animateInputField}></InputData>
+            <InputData categories={categories} addCategory={addCategory} removeCategory={removeCategory} animateInputField={animateInputField}></InputData>
             <div className="game-container">
                 <div className="game-container__icon">
                     <div className="game-container__arrow"></div>

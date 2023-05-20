@@ -1,15 +1,32 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
-export default function InputData({ addCategory, animateInputField }) {
+export default function InputData({ categories, addCategory, removeCategory, animateInputField }) {
 
     const textInputField = useRef();
+    const selectField = useRef();
+
+    useEffect(() => {
+        clearTextInput();
+    },[categories])
+
+    function clearTextInput() {
+        textInputField.current.value = '';
+    }
 
     return (
         <div className="input-data">
-            <form >
-                <input className={`input-data__text ${animateInputField ? 'input-data__animate' : null}`} type="text" ref={textInputField}></input>
-            </form>
-            <button className="input-data__button" onClick={() => addCategory(textInputField.current.value)}>Add</button>
-        </div> 
+            <div className="input-data__add">
+                <input className={`input-data__text ${animateInputField ? 'input-data__animate' : null}`} type="text" placeholder="Name" ref={textInputField}></input>
+                <button className="input-data__button" onClick={() => addCategory(textInputField.current.value)}>Add</button>
+            </div>
+            <div className="input-data__remove">
+                <select className="input-data__select" ref={selectField}>
+                {categories.map((item, key) => (
+                    <option className="input-data__options">{item.title}</option>
+                ))}
+                </select>
+                <button className="input-data__button" onClick={() => removeCategory(selectField)}>Remove</button>
+            </div>
+        </div>
     );
 }

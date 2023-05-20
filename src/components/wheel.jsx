@@ -18,6 +18,7 @@ export default function Wheel({ categories, tileCount, getWinner }) {
     }
 
     function spin() {
+        if (categories.length === 0) return;
         setSpinAmount(previous => previous + generateSpinValue());
     }
 
