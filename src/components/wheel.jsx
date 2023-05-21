@@ -5,7 +5,7 @@ import WheelTitle from "./wheel-title";
 
 export default function Wheel({ categories, availableColors, tileCount, getWinner }) {
 
-    const [spinAmount, setSpinAmount] = useState(0);
+    const [spinAmount, setSpinAmount] = useState(180);
 
     useEffect(() => {
         setTimeout(() => {
