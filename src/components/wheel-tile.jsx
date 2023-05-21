@@ -8,7 +8,7 @@ export default function WheelTile({ backgroundColor, position, tileCount }) {
     return (
             <circle r="125" cx="250" cy="250" fill="transparent"
                 stroke={backgroundColor}
-                strokeWidth="235"
+                strokeWidth="250"
                 strokeDasharray={`calc((100 / ${tileCount}) * 785.4 / 100) 1570`}
                 style={tileStyle}/>
     );

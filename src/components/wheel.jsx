@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import WheelTile from "./wheel-tile";
 import WheelTitle from "./wheel-title";
 
-export default function Wheel({ categories, tileCount, getWinner }) {
+export default function Wheel({ categories, availableColors, tileCount, getWinner }) {
 
     const [spinAmount, setSpinAmount] = useState(0);
 
@@ -36,7 +36,9 @@ export default function Wheel({ categories, tileCount, getWinner }) {
             {categories.map((item, key) => (
                 <WheelTitle title={item.title} position={item.position} tileCount={tileCount} key={key}></WheelTitle>
             ))}
-
+            {(categories.length === 0 ? (
+                <WheelTile backgroundColor={availableColors[0]} position={0} tileCount={1}></WheelTile>
+            ) : null)}
         </svg>
     );
 }

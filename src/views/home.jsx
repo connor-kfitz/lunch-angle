@@ -33,7 +33,7 @@ export default function Home() {
     }
 
     function removeCategory(title) {
-        if (categories.length === 0) return;
+        if (categories.length === 0 || !title.current.value) return;
         const index = categories.map(item => item.title).indexOf(title.current.value);
         let cateogriesDeepCopy = JSON.parse(JSON.stringify(categories));
         let color = cateogriesDeepCopy[index].backgroundColor
@@ -79,14 +79,16 @@ export default function Home() {
 
     return (
         <div className="home">
-            <InputData categories={categories} addCategory={addCategory} removeCategory={removeCategory} animateInputField={animateInputField}></InputData>
-            <div className="game-container">
+            <div className="board">
+                <InputData categories={categories} addCategory={addCategory} removeCategory={removeCategory} 
+                animateInputField={animateInputField} winner={winner}></InputData>
+                <div className="game-container">
+                    <Wheel categories={categories} availableColors={availableColors} tileCount={getTileCount()} getWinner={getWinner}></Wheel>
+                    <div className="wheel__center"></div>
+                </div>
                 <div className="game-container__icon">
                     <div className="game-container__arrow"></div>
                 </div>
-                <Wheel categories={categories} tileCount={getTileCount()} getWinner={getWinner}></Wheel>
-                <div className="wheel__center"></div>
-                <div className="game-container__winner">Winner: {winner}</div>
             </div>
         </div>
     );

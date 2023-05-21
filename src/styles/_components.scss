@@ -1,4 +1,15 @@
+.board {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    border-radius: 5rem;
+    background-color: #2d2d30;
+}
+
 .input-data {
+    margin-right: 5rem;
+
     &__add {
         display: flex;
         margin-bottom: 2rem;
@@ -74,14 +85,9 @@
     width: 50rem;
 
     &__icon {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        right: -12rem;
         width: 8rem;
         height: 6rem;
-        cursor: pointer;
+        margin-left: 4rem;
         animation: horizontalBounce .8s infinite;
     }
 
@@ -133,7 +139,16 @@
 
     &__winner {
         text-align: center;
-        margin-top: 4rem;
+        margin-bottom: 1rem;
+        font-size: 3rem;   
+        text-decoration: underline;
+        text-decoration-thickness: .2rem;
+        text-underline-offset: .5rem;
+    }
+
+    &__result {
+        text-align: center;
+        margin-bottom: 4rem;
         font-size: 3rem;   
     }
 }
@@ -146,6 +161,7 @@
     background-color: white;
     transition: all ease 4s;
     border: solid #fff .2rem;
+    cursor: pointer;
 
     &__tile {
         position: absolute;
