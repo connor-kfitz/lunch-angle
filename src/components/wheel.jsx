@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import WheelTile from "./wheel-tile";
 import WheelTitle from "./wheel-title";
@@ -6,20 +6,25 @@ import WheelTitle from "./wheel-title";
 export default function Wheel({ categories, availableColors, tileCount, getWinner }) {
 
     const [spinAmount, setSpinAmount] = useState(180);
+    const spinLock = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            getWinner(spinAmount);
-        }, 4000)
-    },[spinAmount, getWinner])
+       spinLock.current = false; 
+    },[])
 
     const spinValue = {
         transform: `rotate(${spinAmount}deg)` 
     }
 
     function spin() {
-        if (categories.length === 0) return;
-        setSpinAmount(previous => previous + generateSpinValue());
+        if (categories.length === 0 || spinLock.current) return;
+        let spinValue = generateSpinValue();
+        setSpinAmount(previous => previous + spinValue);
+        spinLock.current = true;
+        setTimeout(() => {
+            getWinner(spinAmount + spinValue);
+            spinLock.current = false;
+        }, 4000)
     }
 
     function generateSpinValue() {

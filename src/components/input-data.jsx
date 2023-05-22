@@ -25,7 +25,7 @@ export default function InputData({ categories, addCategory, removeCategory, win
                 <select className="input-data__select" ref={selectField}>
                     <option></option>
                     {categories.map((item, key) => (
-                        <option className="input-data__option">{item.title}</option>
+                        <option className="input-data__option" key={key}>{item.title}</option>
                     ))}
                 </select>
                 <button className="input-data__button" onClick={() => removeCategory(selectField)}>Remove</button>
